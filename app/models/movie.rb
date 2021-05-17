@@ -42,5 +42,12 @@ class Movie < ApplicationRecord
     join_records = self.characters
 
     other_record_ids = []
+
+    join_records.each do |a_record|
+      other_record_ids.push(a_record.actor_id)
+    end
+
+    Actor.where({ :id => other_record_ids})
+
   end
 end
